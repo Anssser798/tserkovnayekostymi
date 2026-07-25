@@ -137,12 +137,93 @@
 
         /* ----- правая колонка (кот + костюмы) ----- */
         .preview-col {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 16px;
-            padding-top: 4px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+        align-items: start;
+        padding-top: 4px;
+        width: 100%;
         }
+        .fitting-area {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        }
+        .wardrobe-area {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background: rgba(42, 29, 24, 0.4);
+    border-radius: 20px;
+    padding: 16px 18px;
+    border: 1px solid rgba(123, 112, 88, 0.15);
+    min-height: 400px;
+    height: 100%;
+}
+
+.wardrobe-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: #987652;
+    letter-spacing: 0.5px;
+    text-align: center;
+    border-bottom: 1px solid rgba(123, 112, 88, 0.15);
+    padding-bottom: 8px;
+}
+
+.wardrobe-area .wardrobe-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 4px;
+    border-top: none;
+    margin-top: 0;
+}
+
+.wardrobe-area .layer-count {
+    font-size: 14px;
+    color: #b58d65;
+    background: rgba(42, 29, 24, 0.5);
+    padding: 2px 14px;
+    border-radius: 14px;
+    border: 1px solid rgba(123, 112, 88, 0.2);
+    font-weight: 600;
+}
+
+.wardrobe-area .clear-btn {
+    font-size: 12px;
+    padding: 4px 14px;
+    border-radius: 12px;
+    background: rgba(180, 80, 80, 0.2);
+    border: 1px solid rgba(180, 80, 80, 0.2);
+    color: #d4a08a;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.wardrobe-area .clear-btn:hover {
+    background: rgba(180, 80, 80, 0.35);
+    border-color: #d4a08a;
+}
+
+.wardrobe-area .wardrobe-list {
+    flex: 1;
+    max-height: 320px;
+    overflow-y: auto;
+    padding: 4px 2px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.wardrobe-area .wardrobe-empty {
+    color: #7b7058;
+    font-size: 13px;
+    text-align: center;
+    padding: 20px 0;
+    opacity: 0.6;
+}
+
 
         .preview-col .preview-label {
             font-size: 13px;
@@ -595,14 +676,20 @@
                 grid-template-columns: 1fr;
                 gap: 24px;
             }
-            .preview-col {
-                flex-direction: row;
-                flex-wrap: wrap;
-                justify-content: center;
-                padding-top: 8px;
-                border-top: 1px solid rgba(123, 112, 88, 0.15);
-                padding-top: 20px;
-            }
+ .preview-col {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+    .wardrobe-area {
+        min-height: auto;
+        height: auto;
+        max-height: 300px;
+    }
+    .wardrobe-area .wardrobe-list {
+        max-height: 200px;
+    }
+}
+
             .preview-col .preview-label {
                 width: 100%;
                 text-align: center;
@@ -648,10 +735,17 @@
             .main-grid {
                 gap: 18px;
             }
-            .preview-col {
-                flex-direction: column;
-                align-items: center;
-            }
+               .preview-col {
+        gap: 16px;
+    }
+    .wardrobe-area {
+        padding: 12px 14px;
+        max-height: 260px;
+    }
+    .wardrobe-area .wardrobe-list {
+        max-height: 150px;
+    }
+}
             .cat-actions {
                 width: 100%;
                 min-width: unset;
@@ -683,62 +777,67 @@
 
         <!-- Основная сетка (только правая колонка) -->
         <div class="main-grid">
-            <div class="preview-col">
-                <span class="preview-label">Примерка</span>
+<div class="preview-col">
+    <!-- Левая колонка: примерка -->
+    <div class="fitting-area">
+        <span class="preview-label">Примерка</span>
 
-                <!-- Контейнер кота 100x150 -->
-                <div class="cat-container" id="catContainer">
-                    <img class="cat-base" id="catBase" src="" alt="Окрас кота" style="display:none;" />
-                    <div class="layers-container" id="layersContainer"></div>
-                    <span class="placeholder-text" id="catPlaceholder">
-                        загрузите<br />окрас
+        <!-- Контейнер кота 100x150 -->
+        <div class="cat-container" id="catContainer">
+            <img class="cat-base" id="catBase" src="" alt="Окрас кота" style="display:none;" />
+            <div class="layers-container" id="layersContainer"></div>
+            <span class="placeholder-text" id="catPlaceholder">
+                загрузите<br />окрас
+            </span>
+        </div>
+
+        <!-- Действия -->
+        <div class="cat-actions">
+            <button class="btn-sm primary" id="uploadBtn">
+                <span class="icon">⬆</span> Загрузить окрас
+            </button>
+            <input type="file" id="fileInput" accept="image/*" />
+
+            <button class="btn-sm" id="urlToggleBtn">
+                <span class="icon">!</span> Вставить ссылку
+            </button>
+            <input type="text" id="urlInput" placeholder="Прямая ссылка на изображение (не работает ссылка с catwar)" />
+
+            <!-- Дропдаун костюмов -->
+            <div class="costume-dropdown-wrap">
+                <button class="costume-dropdown-btn" id="costumeDropdownBtn">
+                    <span>
+                        <span style="color:#7b7058;font-weight:400;">Костюм: </span>
+                        <span class="selected-name" id="selectedCostumeName">не выбран</span>
                     </span>
-                </div>
-
-                <!-- Действия -->
-                <div class="cat-actions">
-                    <button class="btn-sm primary" id="uploadBtn">
-                        <span class="icon">⬆</span> Загрузить окрас
-                    </button>
-                    <input type="file" id="fileInput" accept="image/*" />
-
-                    <button class="btn-sm" id="urlToggleBtn">
-                        <span class="icon">!</span> Вставить URL
-                    </button>
-                    <input type="text" id="urlInput" placeholder="Прямая ссылка на изображение (не работает ссылка с catwar!)" />
-
-                    <!-- Дропдаун костюмов -->
-                    <div class="costume-dropdown-wrap">
-                        <button class="costume-dropdown-btn" id="costumeDropdownBtn">
-                            <span>
-                                <span style="color:#7b7058;font-weight:400;">Костюм: </span>
-                                <span class="selected-name" id="selectedCostumeName">не выбран</span>
-                            </span>
-                            <span style="display:flex; align-items:center; gap:8px;">
-                                <span class="add-layer-btn" id="addLayerBtn" title="Добавить слой">+</span>
-                                <span class="arrow">▾</span>
-                            </span>
-                        </button>
-                        <div class="costume-dropdown-menu" id="costumeDropdownMenu">
-                            <!-- заполняется JS -->
-                        </div>
-                    </div>
-
-                    <div class="costume-status" id="costumeStatus">
-                        <span style="color:#7b7058;">Выберите костюм и нажмите +</span>
-                    </div>
-
-                    <!-- Гардероб -->
-                    <div class="wardrobe-controls">
-                        <span class="wardrobe-label">Гардеробная</span>
-                        <span class="layer-count" id="layerCount">0</span>
-                        <button class="clear-btn" id="clearLayersBtn">Очистить</button>
-                    </div>
-                    <div class="wardrobe-list" id="wardrobeList">
-                        <div class="wardrobe-empty">Нет надетых костюмов</div>
-                    </div>
+                    <span style="display:flex; align-items:center; gap:8px;">
+                        <span class="add-layer-btn" id="addLayerBtn" title="Добавить слой">+</span>
+                        <span class="arrow">▾</span>
+                    </span>
+                </button>
+                <div class="costume-dropdown-menu" id="costumeDropdownMenu">
+                    <!-- заполняется JS -->
                 </div>
             </div>
+
+            <div class="costume-status" id="costumeStatus">
+                <span style="color:#7b7058;">Выберите костюм и нажмите +</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Правая колонка: гардеробная -->
+    <div class="wardrobe-area">
+        <span class="wardrobe-title">Гардеробная</span>
+        <div class="wardrobe-controls">
+            <span class="layer-count" id="layerCount">0</span>
+            <button class="clear-btn" id="clearLayersBtn">✕ Очистить всё</button>
+        </div>
+        <div class="wardrobe-list" id="wardrobeList">
+            <div class="wardrobe-empty">Нет надетых костюмов</div>
+        </div>
+    </div>
+</div>
         </div>
     </div>
 
