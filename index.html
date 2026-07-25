@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Одевалка</title>
+    <title>Вешалка</title>
     <style>
         /* ----- общие сбросы и шрифт ----- */
         * {
@@ -105,35 +105,13 @@
             line-height: 1.2;
         }
 
-        .header-text .badge {
-            font-size: 14px;
-            font-weight: 400;
-            color: #7b7058;
-            background: rgba(42, 29, 24, 0.5);
-            padding: 2px 14px;
-            border-radius: 30px;
-            border: 1px solid rgba(123, 112, 88, 0.3);
-            display: inline-block;
-            align-self: flex-start;
-        }
-
-        .subtitle {
-            color: #8d8374;
-            font-size: 14px;
-            padding-left: 16px;
-            border-left: 3px solid #987652;
-            opacity: 0.9;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-            margin-bottom: 0;
-        }
-
-        /* ----- описание ----- */
         .description {
             color: #8d8374;
             font-size: 14px;
             line-height: 1.6;
-            margin-bottom: 20px;
             padding: 0 2px;
+            max-width: 400px;
+            word-wrap: break-word;
         }
 
         .description a {
@@ -152,213 +130,9 @@
         /* ----- основная сетка ----- */
         .main-grid {
             display: grid;
-            grid-template-columns: 1fr 240px;
+            grid-template-columns: 1fr;
             gap: 32px;
             align-items: start;
-        }
-
-        /* ----- левая колонка (форма) ----- */
-        .form-col {
-            min-width: 0;
-        }
-
-        .field {
-            margin-bottom: 22px;
-        }
-
-        .field label {
-            display: block;
-            font-size: 15px;
-            font-weight: 500;
-            color: #b58d65;
-            margin-bottom: 5px;
-            letter-spacing: 0.2px;
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
-        }
-
-        .field .hint {
-            font-size: 13px;
-            color: #7b7058;
-            font-weight: 400;
-            margin-left: 8px;
-        }
-
-        .input-row {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .input-row input[type="number"],
-        .input-row input[type="text"] {
-            flex: 1;
-            background: rgba(42, 29, 24, 0.7);
-            border: 1px solid rgba(123, 112, 88, 0.4);
-            border-radius: 14px;
-            padding: 12px 16px;
-            font-size: 18px;
-            font-weight: 500;
-            color: #e8ddd0;
-            outline: none;
-            transition: 0.25s;
-            min-width: 0;
-            width: 100%;
-            box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.3);
-        }
-
-        .input-row input[type="number"]:focus,
-        .input-row input[type="text"]:focus {
-            border-color: #b58d65;
-            background: rgba(42, 29, 24, 0.9);
-            box-shadow: 0 0 0 3px rgba(181, 141, 101, 0.2);
-        }
-
-        .input-row input[type="number"]:disabled,
-        .input-row input[type="text"]:disabled {
-            opacity: 0.4;
-            cursor: not-allowed;
-            background: rgba(42, 29, 24, 0.4);
-        }
-
-        .input-row .unit {
-            font-size: 15px;
-            color: #7b7058;
-            font-weight: 500;
-            min-width: 22px;
-        }
-
-        .mode-toggle {
-            display: inline-flex;
-            background: rgba(42, 29, 24, 0.5);
-            border-radius: 20px;
-            padding: 2px;
-            gap: 2px;
-            flex-shrink: 0;
-            margin-left: 4px;
-        }
-
-        .mode-btn {
-            padding: 4px 12px;
-            border-radius: 16px;
-            cursor: pointer;
-            color: #7b7058;
-            font-size: 14px;
-            font-weight: 500;
-            transition: 0.2s;
-            user-select: none;
-            line-height: 1.4;
-        }
-
-        .mode-btn.active {
-            background: #987652;
-            color: #f5f0e0;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
-        }
-
-        .mode-btn:not(.active):hover {
-            color: #b58d65;
-        }
-
-        .checkbox-wrap {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-top: 8px;
-            padding-left: 2px;
-        }
-
-        .checkbox-wrap input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            accent-color: #987652;
-            cursor: pointer;
-            flex-shrink: 0;
-        }
-
-        .checkbox-wrap label {
-            font-size: 14px;
-            color: #8d8374;
-            cursor: pointer;
-            font-weight: 400;
-            margin-bottom: 0;
-        }
-
-        .btn {
-            width: 100%;
-            padding: 16px 20px;
-            border: none;
-            border-radius: 18px;
-            font-size: 18px;
-            font-weight: 600;
-            background: linear-gradient(145deg, #987652, #7b7058);
-            color: #f5f0e0;
-            cursor: pointer;
-            transition: all 0.25s;
-            letter-spacing: 0.5px;
-            margin-top: 6px;
-            box-shadow: 0 10px 24px -8px rgba(0, 0, 0, 0.6);
-            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
-        }
-
-        .btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 14px 32px -10px rgba(0, 0, 0, 0.7);
-            background: linear-gradient(145deg, #a8865e, #8a7b62);
-        }
-
-        .btn:active {
-            transform: translateY(1px);
-            box-shadow: 0 4px 14px -4px rgba(0, 0, 0, 0.5);
-        }
-
-        #result {
-            margin-top: 28px;
-            padding: 18px 22px;
-            border-radius: 18px;
-            background: rgba(42, 29, 24, 0.6);
-            border: 1px solid rgba(123, 112, 88, 0.2);
-            min-height: 72px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.3s;
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-        }
-
-        #result .placeholder {
-            color: #7b7058;
-            font-size: 15px;
-            text-align: center;
-            opacity: 0.8;
-        }
-
-        #result .success {
-            color: #e8ddd0;
-            font-size: 18px;
-            font-weight: 500;
-            text-align: center;
-            line-height: 1.6;
-            width: 100%;
-        }
-
-        #result .success strong {
-            color: #b58d65;
-            font-weight: 700;
-            background: rgba(123, 112, 88, 0.2);
-            padding: 2px 12px;
-            border-radius: 8px;
-            display: inline-block;
-            white-space: normal;
-            word-break: break-word;
-        }
-
-        #result .error {
-            color: #d4a08a;
-            font-size: 16px;
-            text-align: center;
-            line-height: 1.5;
-            width: 100%;
         }
 
         /* ----- правая колонка (кот + костюмы) ----- */
@@ -394,13 +168,6 @@
             image-rendering: crisp-edges;
         }
 
-        .cat-container canvas {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
-
         .cat-container .cat-base {
             position: absolute;
             top: 0;
@@ -410,19 +177,7 @@
             object-fit: contain;
             image-rendering: pixelated;
             image-rendering: crisp-edges;
-        }
-
-        .cat-container .costume-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            pointer-events: none;
-            image-rendering: pixelated;
-            image-rendering: crisp-edges;
-            transition: opacity 0.2s;
+            z-index: 1;
         }
 
         .cat-container .placeholder-text {
@@ -437,8 +192,34 @@
             opacity: 0.7;
             pointer-events: none;
             line-height: 1.4;
+            z-index: 0;
         }
 
+        /* ----- контейнер слоёв на модели ----- */
+        .layers-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+        }
+        .layers-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            image-rendering: pixelated;
+            image-rendering: crisp-edges;
+        }
+
+        /* ----- действия ----- */
         .cat-actions {
             display: flex;
             flex-direction: column;
@@ -475,6 +256,10 @@
         .cat-actions .btn-sm.primary:hover {
             background: #a8865e;
             border-color: #b58d65;
+        }
+
+        .cat-actions .btn-sm .icon {
+            margin-right: 4px;
         }
 
         /* ----- кастомный дропдаун костюмов ----- */
@@ -524,6 +309,19 @@
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
+        }
+
+        .add-layer-btn {
+            cursor: pointer;
+            font-size: 18px;
+            line-height: 1;
+            color: #b58d65;
+            transition: 0.2s;
+            padding: 0 4px;
+        }
+        .add-layer-btn:hover {
+            color: #d4b48c;
+            transform: scale(1.2);
         }
 
         .costume-dropdown-menu {
@@ -644,10 +442,6 @@
             display: block;
         }
 
-        .cat-actions .btn-sm .icon {
-            margin-right: 4px;
-        }
-
         .costume-status {
             font-size: 12px;
             color: #7b7058;
@@ -661,13 +455,146 @@
             font-weight: 500;
         }
 
+        /* ----- Гардероб (список слоёв) ----- */
+        .wardrobe-controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 8px;
+            padding: 4px 0;
+            border-top: 1px solid rgba(123, 112, 88, 0.2);
+            flex-wrap: wrap;
+        }
+        .wardrobe-label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #987652;
+            letter-spacing: 0.5px;
+        }
+        .layer-count {
+            font-size: 13px;
+            color: #7b7058;
+            background: rgba(42, 29, 24, 0.5);
+            padding: 0 10px;
+            border-radius: 12px;
+            border: 1px solid rgba(123, 112, 88, 0.2);
+        }
+        .clear-btn {
+            margin-left: auto;
+            font-size: 12px;
+            padding: 4px 12px;
+            border-radius: 12px;
+            background: rgba(180, 80, 80, 0.2);
+            border: 1px solid rgba(180, 80, 80, 0.2);
+            color: #d4a08a;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .clear-btn:hover {
+            background: rgba(180, 80, 80, 0.35);
+            border-color: #d4a08a;
+        }
+
+        .wardrobe-list {
+            width: 100%;
+            max-height: 160px;
+            overflow-y: auto;
+            padding: 4px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+        .wardrobe-empty {
+            color: #7b7058;
+            font-size: 13px;
+            text-align: center;
+            padding: 8px 0;
+            opacity: 0.6;
+        }
+
+        /* элемент списка (слой) */
+        .wardrobe-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(42, 29, 24, 0.5);
+            border-radius: 10px;
+            padding: 4px 10px 4px 14px;
+            border: 1px solid rgba(123, 112, 88, 0.15);
+            transition: 0.15s;
+            font-size: 13px;
+            color: #c4b8a8;
+            cursor: grab;
+            user-select: none;
+        }
+        .wardrobe-item:active {
+            cursor: grabbing;
+        }
+        .wardrobe-item.dragging {
+            opacity: 0.3;
+            border-color: #987652;
+        }
+        .wardrobe-item.drag-over {
+            border-color: #b58d65;
+            background: rgba(123, 112, 88, 0.2);
+        }
+        .wardrobe-item .item-id {
+            font-weight: 500;
+            color: #b58d65;
+        }
+        .wardrobe-item .item-controls {
+            display: flex;
+            gap: 6px;
+        }
+        .wardrobe-item .item-controls button {
+            background: transparent;
+            border: none;
+            color: #7b7058;
+            cursor: pointer;
+            font-size: 16px;
+            padding: 2px 6px;
+            border-radius: 6px;
+            transition: 0.2s;
+            line-height: 1;
+        }
+        .wardrobe-item .item-controls button:hover {
+            background: rgba(123, 112, 88, 0.2);
+            color: #d4b48c;
+        }
+        .wardrobe-item .item-controls button.remove-btn:hover {
+            background: rgba(180, 80, 80, 0.2);
+            color: #d4a08a;
+        }
+        .wardrobe-item:first-child {
+            border-top-color: #987652;
+            border-top-width: 2px;
+        }
+        .wardrobe-item:last-child {
+            border-bottom-color: #987652;
+            border-bottom-width: 2px;
+        }
+
+        .wardrobe-list::-webkit-scrollbar {
+            width: 4px;
+        }
+        .wardrobe-list::-webkit-scrollbar-track {
+            background: rgba(42, 29, 24, 0.3);
+            border-radius: 4px;
+        }
+        .wardrobe-list::-webkit-scrollbar-thumb {
+            background: #7b7058;
+            border-radius: 4px;
+        }
+        .wardrobe-list::-webkit-scrollbar-thumb:hover {
+            background: #987652;
+        }
+
         /* ----- адаптив ----- */
         @media (max-width: 820px) {
             .main-grid {
                 grid-template-columns: 1fr;
                 gap: 24px;
             }
-
             .preview-col {
                 flex-direction: row;
                 flex-wrap: wrap;
@@ -676,23 +603,19 @@
                 border-top: 1px solid rgba(123, 112, 88, 0.15);
                 padding-top: 20px;
             }
-
             .preview-col .preview-label {
                 width: 100%;
                 text-align: center;
                 align-self: center;
             }
-
             .cat-container {
                 width: 100px;
                 height: 150px;
             }
-
             .cat-actions {
                 flex: 1;
                 min-width: 180px;
             }
-
             .costume-dropdown-menu {
                 max-height: 260px;
             }
@@ -703,67 +626,32 @@
                 padding: 20px 16px;
                 border-radius: 28px;
             }
-
             .header {
                 gap: 10px;
                 flex-direction: column;
                 align-items: center;
             }
-
             .header-right {
                 width: 100%;
                 text-align: center;
             }
-
-            .subtitle {
-                padding-left: 0;
-                border-left: none;
-                border-top: 3px solid #987652;
-                padding-top: 8px;
-            }
-
             .crest {
                 width: 65px;
                 height: 65px;
             }
-
             .header-text h1 {
                 font-size: 22px;
             }
-
-            .input-row input[type="number"],
-            .input-row input[type="text"] {
-                font-size: 16px;
-                padding: 10px 14px;
-            }
-
-            #result .success {
-                font-size: 16px;
-            }
-
-            .btn {
-                font-size: 16px;
-                padding: 14px 16px;
-            }
-
             .description {
                 font-size: 13px;
             }
-
-            .mode-btn {
-                font-size: 12px;
-                padding: 3px 10px;
-            }
-
             .main-grid {
                 gap: 18px;
             }
-
             .preview-col {
                 flex-direction: column;
                 align-items: center;
             }
-
             .cat-actions {
                 width: 100%;
                 min-width: unset;
@@ -773,7 +661,6 @@
 </head>
 
 <body>
-
     <div class="glass-card">
         <!-- Шапка -->
         <div class="header">
@@ -781,32 +668,28 @@
                 <img src="heal-light.png" alt="Герб" />
             </div>
             <div class="header-text">
-                <h1>Одевалка</h1>
+                <h1>Вешалка</h1>
                 <div class="description">
-                    Примерка костюмов на модельке кота. Загрузите окрас или попробуйте
-                    подтянуть с <a href="#" id="catwarLink">catwar.ru</a>.
-                    Выберите костюм из списка и он сам наложится поверх окраса.
+                    Примерка костюмов на вашем окрасе. Вы можете загрузить окрас из файла или вставить ссылку с хостинга.
+                    Выберите костюм из списка, затем нажмите <strong>+</strong> чтобы добавить его в слои.
+                    Перетаскивайте слои в гардеробе, чтобы менять порядок.
                     <br>
                     <span style="color:#7b7058;font-size:13px;">
-                        Костюмы отсортированы по отрядам. Нажмите на название, чтобы примерить.
+                        Костюмы отсортированы по отрядам. Нажмите на название, чтобы выбрать.
                     </span>
                 </div>
             </div>
         </div>
 
-        <!-- Основная сетка -->
+        <!-- Основная сетка (только правая колонка) -->
         <div class="main-grid">
-            <!-- Левая колонка: форма -->
-            <div class="form-col">
-            
-            <!-- Правая колонка: кот + костюмы -->
             <div class="preview-col">
-                <span class="preview-label">✦ примерка</span>
+                <span class="preview-label">Примерка</span>
 
                 <!-- Контейнер кота 100x150 -->
                 <div class="cat-container" id="catContainer">
                     <img class="cat-base" id="catBase" src="" alt="Окрас кота" style="display:none;" />
-                    <img class="costume-overlay" id="costumeOverlay" src="" alt="Костюм" style="display:none;" />
+                    <div class="layers-container" id="layersContainer"></div>
                     <span class="placeholder-text" id="catPlaceholder">
                         загрузите<br />окрас
                     </span>
@@ -822,7 +705,7 @@
                     <button class="btn-sm" id="urlToggleBtn">
                         <span class="icon">!</span> Вставить URL
                     </button>
-                    <input type="text" id="urlInput" placeholder="https://catwar.net/.../" />
+                    <input type="text" id="urlInput" placeholder="Прямая ссылка на изображение (не работает ссылка с catwar!)" />
 
                     <!-- Дропдаун костюмов -->
                     <div class="costume-dropdown-wrap">
@@ -831,7 +714,10 @@
                                 <span style="color:#7b7058;font-weight:400;">Костюм: </span>
                                 <span class="selected-name" id="selectedCostumeName">не выбран</span>
                             </span>
-                            <span class="arrow">▾</span>
+                            <span style="display:flex; align-items:center; gap:8px;">
+                                <span class="add-layer-btn" id="addLayerBtn" title="Добавить слой">+</span>
+                                <span class="arrow">▾</span>
+                            </span>
                         </button>
                         <div class="costume-dropdown-menu" id="costumeDropdownMenu">
                             <!-- заполняется JS -->
@@ -839,7 +725,17 @@
                     </div>
 
                     <div class="costume-status" id="costumeStatus">
-                        <span style="color:#7b7058;">Нажмите на костюм, чтобы примерить</span>
+                        <span style="color:#7b7058;">Выберите костюм и нажмите +</span>
+                    </div>
+
+                    <!-- Гардероб -->
+                    <div class="wardrobe-controls">
+                        <span class="wardrobe-label">Гардеробная</span>
+                        <span class="layer-count" id="layerCount">0</span>
+                        <button class="clear-btn" id="clearLayersBtn">Очистить</button>
+                    </div>
+                    <div class="wardrobe-list" id="wardrobeList">
+                        <div class="wardrobe-empty">Нет надетых костюмов</div>
                     </div>
                 </div>
             </div>
@@ -867,7 +763,6 @@
             items: ['8423d', '8423', '8421d', '8421']
         }];
 
-        // Плоский список для быстрого доступа
         const allCostumes = [];
         costumeGroups.forEach(g => {
             g.items.forEach(id => {
@@ -884,16 +779,17 @@
         //  2. СОСТОЯНИЕ
         // ============================================================
         const state = {
-            catImageUrl: null, // загруженный окрас (dataURL или внешний URL)
-            costumeId: null, // выбранный ID костюма
-            isCostumeLoaded: false,
+            catImageUrl: null,
+            costumeId: null,          // выбранный ID в дропдауне
+            layers: [],               // массив ID костюмов (от нижнего к верхнему)
         };
+        const MAX_LAYERS = 15;
 
         // ============================================================
         //  3. DOM-ссылки
         // ============================================================
         const catBase = document.getElementById('catBase');
-        const costumeOverlay = document.getElementById('costumeOverlay');
+        const layersContainer = document.getElementById('layersContainer');
         const catPlaceholder = document.getElementById('catPlaceholder');
         const catContainer = document.getElementById('catContainer');
 
@@ -907,33 +803,30 @@
         const selectedName = document.getElementById('selectedCostumeName');
         const costumeStatus = document.getElementById('costumeStatus');
 
+        const addLayerBtn = document.getElementById('addLayerBtn');
+        const wardrobeList = document.getElementById('wardrobeList');
+        const layerCount = document.getElementById('layerCount');
+        const clearLayersBtn = document.getElementById('clearLayersBtn');
+
         // ============================================================
         //  4. ЗАГРУЗКА ОКРАСА
         // ============================================================
-
-        // Загрузка через файл
-        uploadBtn.addEventListener('click', () => {
-            fileInput.click();
-        });
+        uploadBtn.addEventListener('click', () => fileInput.click());
 
         fileInput.addEventListener('change', (e) => {
             const file = e.target.files[0];
             if (!file) return;
             const reader = new FileReader();
             reader.onload = (ev) => {
-                const dataUrl = ev.target.result;
-                setCatImage(dataUrl);
+                setCatImage(ev.target.result);
                 fileInput.value = '';
             };
             reader.readAsDataURL(file);
         });
 
-        // Переключение поля URL
         urlToggleBtn.addEventListener('click', () => {
             urlInput.classList.toggle('show');
-            if (urlInput.classList.contains('show')) {
-                urlInput.focus();
-            }
+            if (urlInput.classList.contains('show')) urlInput.focus();
         });
 
         urlInput.addEventListener('keydown', (e) => {
@@ -947,45 +840,23 @@
             }
         });
 
-        // Попытка подтянуть с catwar через ссылку в описании
-        document.getElementById('catwarLink').addEventListener('click', (e) => {
-            e.preventDefault();
-            // Пытаемся загрузить стандартное изображение кота с catwar
-            // Используем iframe-подход: пробуем разные варианты
-            const urls = [
-                'https://catwar.net/img/cat/current.png',
-                'https://catwar.ru/img/cat/current.png',
-                'https://catwar.net/profile',
-                'https://catwar.ru/profile',
-            ];
-            // Просто показываем подсказку, как вставить URL
-            urlInput.classList.toggle('show');
-            if (urlInput.classList.contains('show')) {
-                urlInput.placeholder = 'Вставьте прямую ссылку на изображение кота с catwar...';
-                urlInput.focus();
-            }
-            costumeStatus.innerHTML = '<span style="color:#b58d65;">Вставьте ссылку на изображение кота с catwar</span>';
-        });
-
-        // Основная функция установки изображения кота
         function setCatImage(src) {
             if (!src) return;
             state.catImageUrl = src;
             catBase.src = src;
             catBase.style.display = 'block';
             catPlaceholder.style.display = 'none';
-            // Сбрасываем костюм при смене окраса
-            clearCostume();
-            costumeStatus.innerHTML = '<span style="color:#7b7058;">Окрас загружен. Выберите костюм.</span>';
+            // при смене окраса сбрасываем слои
+            clearLayers();
+            costumeStatus.innerHTML = '<span style="color:#7b7058;">Окрас загружен. Выберите костюм и нажмите +</span>';
         }
 
         // ============================================================
         //  5. КОСТЮМЫ — ПОСТРОЕНИЕ МЕНЮ
         // ============================================================
-
         function buildDropdown() {
             dropdownMenu.innerHTML = '';
-            costumeGroups.forEach((group, gi) => {
+            costumeGroups.forEach(group => {
                 const label = document.createElement('div');
                 label.className = 'group-label';
                 label.textContent = group.name;
@@ -1000,96 +871,165 @@
                         <span class="check">✓</span>
                         <span>${id}</span>
                     `;
-                    if (state.costumeId === id) {
-                        item.classList.add('active');
-                    }
-                    item.addEventListener('click', () => {
-                        selectCostume(id);
-                    });
+                    if (state.costumeId === id) item.classList.add('active');
+                    item.addEventListener('click', () => selectCostume(id));
                     dropdownMenu.appendChild(item);
                 });
             });
         }
 
         // ============================================================
-        //  6. ВЫБОР КОСТЮМА
+        //  6. ВЫБОР КОСТЮМА (без автоматического наслаивания)
         // ============================================================
-
         function selectCostume(id) {
             const costume = allCostumes.find(c => c.id === id);
             if (!costume) return;
-
             state.costumeId = id;
-            state.isCostumeLoaded = true;
 
-            // Обновляем активный элемент в меню
             document.querySelectorAll('.costume-item').forEach(el => {
                 el.classList.toggle('active', el.dataset.id === id);
             });
-
-            // Обновляем кнопку
             selectedName.textContent = id;
-
-            // Загружаем изображение костюма
-            const img = new Image();
-            img.onload = () => {
-                costumeOverlay.src = costume.path;
-                costumeOverlay.style.display = 'block';
-                costumeStatus.innerHTML = `
-                    <span style="color:#b58d65;">✓</span>
-                    <span class="highlight">${id}</span>
-                    <span style="color:#7b7058;"> — ${costume.group}</span>
-                `;
-                // Закрываем дропдаун
-                closeDropdown();
-            };
-            img.onerror = () => {
-                costumeStatus.innerHTML = `
-                    <span style="color:#d4a08a;">✗</span>
-                    <span style="color:#d4a08a;">Не удалось загрузить ${id}.png</span>
-                `;
-                costumeOverlay.style.display = 'none';
-                closeDropdown();
-            };
-            img.src = costume.path;
-
-            // Показываем, что загружается
-            costumeStatus.innerHTML = `<span style="color:#7b7058;">Загрузка ${id}...</span>`;
+            costumeStatus.innerHTML = `<span style="color:#b58d65;">${id}</span> выбран. Нажмите + чтобы добавить.`;
+            closeDropdown();
         }
 
-        function clearCostume() {
-            state.costumeId = null;
-            state.isCostumeLoaded = false;
-            costumeOverlay.src = '';
-            costumeOverlay.style.display = 'none';
-            selectedName.textContent = 'не выбран';
-            document.querySelectorAll('.costume-item').forEach(el => {
-                el.classList.remove('active');
+        // ============================================================
+        //  7. УПРАВЛЕНИЕ СЛОЯМИ
+        // ============================================================
+
+        // Рендеринг слоёв на модели и в списке гардероба
+        function renderLayers() {
+            // --- модель ---
+            layersContainer.innerHTML = '';
+            state.layers.forEach((id, index) => {
+                const img = document.createElement('img');
+                img.src = 'kostymi/' + id + '.png';
+                img.alt = id;
+                img.style.zIndex = index + 1;
+                img.onerror = () => { img.style.display = 'none'; };
+                layersContainer.appendChild(img);
             });
-            // Не сбрасываем статус, если есть окрас
-            if (state.catImageUrl) {
-                costumeStatus.innerHTML = '<span style="color:#7b7058;">Выберите костюм из списка</span>';
-            } else {
-                costumeStatus.innerHTML = '<span style="color:#7b7058;">Сначала загрузите окрас</span>';
+
+            // --- счётчик ---
+            layerCount.textContent = state.layers.length;
+
+            // --- список гардероба ---
+            if (state.layers.length === 0) {
+                wardrobeList.innerHTML = '<div class="wardrobe-empty">Нет надетых костюмов</div>';
+                return;
             }
+
+            let html = '';
+            state.layers.forEach((id, index) => {
+                html += `
+                    <div class="wardrobe-item" draggable="true" data-index="${index}">
+                        <span class="item-id">${id}</span>
+                        <span style="color:#7b7058;font-size:11px;">слой ${index + 1}</span>
+                        <div class="item-controls">
+                            <button class="move-up" title="Выше" ${index === 0 ? 'disabled' : ''}>↑</button>
+                            <button class="move-down" title="Ниже" ${index === state.layers.length - 1 ? 'disabled' : ''}>↓</button>
+                            <button class="remove-btn" title="Удалить">✕</button>
+                        </div>
+                    </div>
+                `;
+            });
+            wardrobeList.innerHTML = html;
+
+            // --- обработчики кнопок ---
+            wardrobeList.querySelectorAll('.wardrobe-item').forEach((item, idx) => {
+                const up = item.querySelector('.move-up');
+                const down = item.querySelector('.move-down');
+                const remove = item.querySelector('.remove-btn');
+                if (up) up.addEventListener('click', (e) => { e.stopPropagation();
+                    moveLayer(idx, -1); });
+                if (down) down.addEventListener('click', (e) => { e.stopPropagation();
+                    moveLayer(idx, 1); });
+                if (remove) remove.addEventListener('click', (e) => { e.stopPropagation();
+                    removeLayer(idx); });
+
+                // --- drag & drop ---
+                item.addEventListener('dragstart', (e) => {
+                    e.dataTransfer.setData('text/plain', idx);
+                    item.classList.add('dragging');
+                });
+                item.addEventListener('dragend', () => {
+                    item.classList.remove('dragging');
+                    wardrobeList.querySelectorAll('.wardrobe-item').forEach(el => el.classList.remove('drag-over'));
+                });
+                item.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    const dragIndex = parseInt(e.dataTransfer.getData('text/plain'));
+                    if (dragIndex !== idx) {
+                        wardrobeList.querySelectorAll('.wardrobe-item').forEach(el => el.classList.remove('drag-over'));
+                        item.classList.add('drag-over');
+                    }
+                });
+                item.addEventListener('dragleave', () => {
+                    item.classList.remove('drag-over');
+                });
+                item.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    const fromIndex = parseInt(e.dataTransfer.getData('text/plain'));
+                    if (fromIndex !== idx) {
+                        // Перемещаем элемент из fromIndex в idx
+                        const [removed] = state.layers.splice(fromIndex, 1);
+                        state.layers.splice(idx, 0, removed);
+                        renderLayers();
+                        costumeStatus.innerHTML = '<span style="color:#7b7058;">Порядок слоёв изменён</span>';
+                    }
+                    wardrobeList.querySelectorAll('.wardrobe-item').forEach(el => el.classList.remove('drag-over'));
+                });
+            });
+        }
+
+        // Добавление слоя
+        function addLayer() {
+            const id = state.costumeId;
+            if (!id) {
+                costumeStatus.innerHTML = '<span style="color:#d4a08a;">Сначала выберите костюм</span>';
+                return;
+            }
+            if (state.layers.length >= MAX_LAYERS) {
+                costumeStatus.innerHTML = `<span style="color:#d4a08a;">Максимум ${MAX_LAYERS} слоёв</span>`;
+                return;
+            }
+            state.layers.push(id);
+            renderLayers();
+            costumeStatus.innerHTML = `<span style="color:#b58d65;">✓</span> Костюм <span class="highlight">${id}</span> добавлен (слой ${state.layers.length})`;
+        }
+
+        // Удаление слоя
+        function removeLayer(index) {
+            if (index < 0 || index >= state.layers.length) return;
+            state.layers.splice(index, 1);
+            renderLayers();
+            costumeStatus.innerHTML = '<span style="color:#7b7058;">Слой удалён</span>';
+        }
+
+        // Перемещение слоя (direction: -1 вверх, +1 вниз)
+        function moveLayer(index, direction) {
+            const newIndex = index + direction;
+            if (newIndex < 0 || newIndex >= state.layers.length) return;
+            [state.layers[index], state.layers[newIndex]] = [state.layers[newIndex], state.layers[index]];
+            renderLayers();
+            costumeStatus.innerHTML = '<span style="color:#7b7058;">Порядок слоёв изменён</span>';
+        }
+
+        // Очистка всех слоёв
+        function clearLayers() {
+            if (state.layers.length === 0) return;
+            state.layers = [];
+            renderLayers();
+            costumeStatus.innerHTML = '<span style="color:#7b7058;">Все слои удалены</span>';
         }
 
         // ============================================================
-        //  7. ДРОПДАУН (открытие/закрытие)
+        //  8. ДРОПДАУН (открытие/закрытие)
         // ============================================================
-
         function toggleDropdown() {
-            const isOpen = dropdownMenu.classList.contains('open');
-            if (isOpen) {
-                closeDropdown();
-            } else {
-                openDropdown();
-            }
-        }
-
-        function openDropdown() {
-            dropdownMenu.classList.add('open');
-            dropdownBtn.classList.add('open');
+            dropdownMenu.classList.toggle('open');
+            dropdownBtn.classList.toggle('open');
         }
 
         function closeDropdown() {
@@ -1101,83 +1041,54 @@
             e.stopPropagation();
             toggleDropdown();
         });
-
         document.addEventListener('click', (e) => {
             if (!dropdownBtn.contains(e.target) && !dropdownMenu.contains(e.target)) {
                 closeDropdown();
             }
         });
 
-       
         // ============================================================
-        //  8. ИНИЦИАЛИЗАЦИЯ КОСТЮМОВ
+        //  9. ОБРАБОТЧИКИ СОБЫТИЙ
         // ============================================================
+        addLayerBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            addLayer();
+        });
 
-        buildDropdown();
+        clearLayersBtn.addEventListener('click', clearLayers);
 
-        // Если есть сохранённый выбор, восстанавливаем
-        if (state.costumeId) {
-            const c = allCostumes.find(c => c.id === state.costumeId);
-            if (c) {
-                selectedName.textContent = c.id;
-                document.querySelectorAll('.costume-item').forEach(el => {
-                    el.classList.toggle('active', el.dataset.id === state.costumeId);
-                });
-                // пробуем загрузить костюм
-                const img = new Image();
-                img.onload = () => {
-                    costumeOverlay.src = c.path;
-                    costumeOverlay.style.display = 'block';
-                    costumeStatus.innerHTML = `
-                        <span style="color:#b58d65;">✓</span>
-                        <span class="highlight">${c.id}</span>
-                        <span style="color:#7b7058;"> — ${c.group}</span>
-                    `;
-                };
-                img.onerror = () => {
-                    costumeOverlay.style.display = 'none';
-                    costumeStatus.innerHTML = `<span style="color:#d4a08a;">Не удалось загрузить ${c.id}.png</span>`;
-                };
-                img.src = c.path;
-            }
-        }
-
-        // ============================================================
-        //  10. ДОПОЛНИТЕЛЬНО: попытка автозагрузки с catwar
-        // ============================================================
-
-        // Пытаемся загрузить изображение кота с catwar через iframe (не сработает из-за CORS)
-        // поэтому просто показываем подсказку при клике на ссылку
-
-        console.log('Загрузите окрас и примеряйте костюмы.');
-
-        // ============================================================
-        //  11. ОБРАБОТКА ПЕРЕТАСКИВАНИЯ (drag & drop) для окраса
-        // ============================================================
-
+        // Перетаскивание файлов в контейнер кота
         catContainer.addEventListener('dragover', (e) => {
             e.preventDefault();
             catContainer.style.borderColor = '#b58d65';
         });
-
         catContainer.addEventListener('dragleave', () => {
             catContainer.style.borderColor = 'rgba(123,112,88,0.35)';
         });
-
         catContainer.addEventListener('drop', (e) => {
             e.preventDefault();
             catContainer.style.borderColor = 'rgba(123,112,88,0.35)';
             const files = e.dataTransfer.files;
             if (files.length > 0 && files[0].type.startsWith('image/')) {
                 const reader = new FileReader();
-                reader.onload = (ev) => {
-                    setCatImage(ev.target.result);
-                };
+                reader.onload = (ev) => setCatImage(ev.target.result);
                 reader.readAsDataURL(files[0]);
             }
         });
-    </script>
 
+        // ============================================================
+        //  10. ИНИЦИАЛИЗАЦИЯ
+        // ============================================================
+        buildDropdown();
+        renderLayers();
+
+        // Если был выбран костюм по умолчанию (нет)
+        if (state.costumeId) {
+            selectedName.textContent = state.costumeId;
+        }
+
+        console.log('Вешалка готова! Загрузите окрас, выбирайте костюмы и добавляйте их в слои.');
+    </script>
 </body>
 
 </html>
