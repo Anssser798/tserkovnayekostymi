@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="ru">
-
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Вешалка</title>
     <style>
-        /* ----- общие сбросы и шрифт ----- */
         * {
             margin: 0;
             padding: 0;
@@ -67,15 +65,12 @@
             box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(181, 141, 101, 0.08);
             transition: all 0.2s;
         }
-
-        /* ----- шапка ----- */
         .header {
             display: flex;
             align-items: center;
             gap: 4px;
             margin-bottom: 12px;
         }
-
         .crest {
             flex-shrink: 0;
             width: 240px;
@@ -85,7 +80,6 @@
             justify-content: center;
             padding: 6px;
         }
-
         .crest img {
             width: 100%;
             height: auto;
@@ -126,21 +120,16 @@
             border-bottom: 1px dashed #7b7058;
             transition: 0.2s;
         }
-
         .description a:hover {
             color: #d4b48c;
             border-bottom-color: #b58d65;
         }
-
-        /* ----- основная сетка ----- */
         .main-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 32px;
             align-items: start;
         }
-
-        /* ----- две колонки: примерка и гардеробная ----- */
         .preview-col {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -150,14 +139,12 @@
             padding-top: 4px;
             width: 100%;
         }
-
         .fitting-area {
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 16px;
         }
-
         .wardrobe-area {
             display: flex;
             flex-direction: column;
@@ -169,7 +156,6 @@
             flex: 1;
             min-height: 0;
         }
-
         .wardrobe-title {
             font-size: 14px;
             font-weight: 600;
@@ -179,7 +165,6 @@
             border-bottom: 1px solid rgba(123, 112, 88, 0.15);
             padding-bottom: 8px;
         }
-
         .wardrobe-controls {
             display: flex;
             align-items: center;
@@ -188,7 +173,6 @@
             border-top: 1px solid rgba(123, 112, 88, 0.2);
             flex-wrap: wrap;
         }
-
         .layer-count {
             font-size: 13px;
             color: #b58d65;
@@ -198,7 +182,6 @@
             border: 1px solid rgba(123, 112, 88, 0.2);
             font-weight: 600;
         }
-
         .clear-btn {
             margin-left: auto;
             font-size: 12px;
@@ -210,12 +193,10 @@
             cursor: pointer;
             transition: 0.2s;
         }
-
         .clear-btn:hover {
             background: rgba(180, 80, 80, 0.35);
             border-color: #d4a08a;
         }
-
         .wardrobe-list {
             flex: 1;
             overflow-y: auto;
@@ -225,7 +206,6 @@
             gap: 4px;
             max-height: 320px;
         }
-
         .wardrobe-empty {
             color: #7b7058;
             font-size: 13px;
@@ -233,7 +213,6 @@
             padding: 20px 0;
             opacity: 0.6;
         }
-
         .preview-col .preview-label {
             font-size: 13px;
             color: #7b7058;
@@ -243,8 +222,6 @@
             align-self: flex-start;
             padding-left: 4px;
         }
-
-        /* ----- контейнер кота ----- */
         .cat-container {
             position: relative;
             width: 100px;
@@ -258,7 +235,6 @@
             image-rendering: pixelated;
             image-rendering: crisp-edges;
         }
-
         .cat-container .cat-base {
             position: absolute;
             top: 0;
@@ -270,7 +246,6 @@
             image-rendering: crisp-edges;
             z-index: 1;
         }
-
         .cat-container .placeholder-text {
             position: absolute;
             top: 50%;
@@ -285,7 +260,6 @@
             line-height: 1.4;
             z-index: 0;
         }
-
         .layers-container {
             position: absolute;
             top: 0;
@@ -297,7 +271,6 @@
             image-rendering: pixelated;
             image-rendering: crisp-edges;
         }
-
         .layers-container img {
             position: absolute;
             top: 0;
@@ -309,20 +282,16 @@
             image-rendering: pixelated;
             image-rendering: crisp-edges;
         }
-
         .layers-container .preview-layer {
             z-index: 999;
             box-sizing: border-box;
         }
-
-        /* ----- действия ----- */
         .cat-actions {
             display: flex;
             flex-direction: column;
             gap: 8px;
             width: 100%;
         }
-
         .cat-actions .btn-sm {
             padding: 8px 14px;
             border: none;
@@ -337,19 +306,16 @@
             text-align: center;
             white-space: nowrap;
         }
-
         .cat-actions .btn-sm:hover {
             background: rgba(123, 112, 88, 0.4);
             border-color: #b58d65;
             color: #d4b48c;
         }
-
         .cat-actions .btn-sm.primary {
             background: #987652;
             color: #f5f0e0;
             border-color: #987652;
         }
-
         .cat-actions .btn-sm.primary:hover {
             background: #a8865e;
             border-color: #b58d65;
@@ -358,14 +324,10 @@
         .cat-actions .btn-sm .icon {
             margin-right: 4px;
         }
-
-
-        /* ----- кастомный дропдаун ----- */
         .costume-dropdown-wrap {
             position: relative;
             width: 100%;
         }
-
         .costume-dropdown-btn {
             width: 100%;
             padding: 10px 16px;
@@ -383,12 +345,10 @@
             box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.2);
             text-align: left;
         }
-
         .costume-dropdown-btn:hover {
             border-color: #b58d65;
             background: rgba(42, 29, 24, 0.9);
         }
-
         .costume-dropdown-btn .arrow {
             font-size: 12px;
             color: #7b7058;
@@ -396,11 +356,9 @@
             margin-left: 8px;
             flex-shrink: 0;
         }
-
         .costume-dropdown-btn.open .arrow {
             transform: rotate(180deg);
         }
-
         .costume-dropdown-btn .selected-name {
             color: #b58d65;
             font-weight: 600;
@@ -409,7 +367,6 @@
             text-overflow: ellipsis;
             max-width: 140px;
         }
-
         .add-layer-btn {
             cursor: pointer;
             font-size: 18px;
@@ -422,7 +379,6 @@
             color: #d4b48c;
             transform: scale(1.2);
         }
-
         .costume-dropdown-menu {
             position: absolute;
             top: calc(100% + 6px);
@@ -440,11 +396,9 @@
             z-index: 20;
             padding: 6px 0;
         }
-
         .costume-dropdown-menu.open {
             display: block;
         }
-
         .costume-dropdown-menu .group-label {
             padding: 8px 16px 4px;
             font-size: 12px;
@@ -455,12 +409,10 @@
             border-top: 1px solid rgba(123, 112, 88, 0.15);
             margin-top: 4px;
         }
-
         .costume-dropdown-menu .group-label:first-child {
             border-top: none;
             margin-top: 0;
         }
-
         .costume-dropdown-menu .costume-item {
             padding: 8px 16px 8px 20px;
             font-size: 14px;
@@ -473,7 +425,6 @@
             border-left: 2px solid transparent;
             word-break: break-word;
         }
-
         .costume-dropdown-menu .costume-item:hover {
             background: rgba(123, 112, 88, 0.2);
             color: #e8ddd0;
@@ -510,8 +461,6 @@
         .costume-dropdown-menu::-webkit-scrollbar-thumb:hover {
             background: #987652;
         }
-
-        /* ----- скрытый input и поле для ссылки ----- */
         #fileInput {
             display: none;
         }
@@ -552,8 +501,6 @@
             color: #b58d65;
             font-weight: 500;
         }
-
-        /* ----- элементы списка гардероба ----- */
         .wardrobe-item {
             display: flex;
             align-items: center;
@@ -636,7 +583,6 @@
             background: #987652;
         }
 
-        /* ----- адаптив ----- */
         @media (max-width: 820px) {
             .main-grid {
                 gap: 24px;
@@ -735,10 +681,8 @@
         }
     </style>
 </head>
-
 <body>
     <div class="glass-card">
-        <!-- Шапка -->
         <div class="header">
             <div class="crest">
                 <img src="heal-light.png" alt="Герб" />
@@ -756,15 +700,10 @@
                 </div>
             </div>
         </div>
-
-        <!-- Основная сетка -->
         <div class="main-grid">
             <div class="preview-col">
-                <!-- Левая колонка: примерка -->
                 <div class="fitting-area">
                     <span class="preview-label">Примерка</span>
-
-                    <!-- Контейнер кота -->
                     <div class="cat-container" id="catContainer">
                         <img class="cat-base" id="catBase" src="" alt="Окрас кота" style="display:none;" />
                         <div class="layers-container" id="layersContainer"></div>
@@ -772,21 +711,15 @@
                             загрузите<br />окрас
                         </span>
                     </div>
-
-                    <!-- Действия -->
                     <div class="cat-actions">
                         <button class="btn-sm primary" id="uploadBtn">
                             <span class="icon"></span> Загрузить окрас
                         </button>
                         <input type="file" id="fileInput" accept="image/*" />
-
                         <button class="btn-sm" id="urlToggleBtn">
                             <span class="icon"></span> Вставить ссылку
                         </button>
                         <input type="text" id="urlInput" placeholder="Прямая ссылка на изображение (не работает ссылка с catwar)" />
-
-
-                        <!-- Дропдаун костюмов -->
                         <div class="costume-dropdown-wrap">
                             <button class="costume-dropdown-btn" id="costumeDropdownBtn">
                                 <span>
@@ -807,8 +740,6 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Правая колонка: гардеробная -->
                 <div class="wardrobe-area">
                     <span class="wardrobe-title">Гардеробная</span>
                     <div class="wardrobe-controls">
@@ -824,10 +755,24 @@
     </div>
 
     <script>
-        // ============================================================
-        //  1. ДАННЫЕ КОСТЮМОВ С ИМЕНАМИ
-        // ============================================================
-        const costumeGroups = [{
+        const costumeGroups = [
+            {
+             name: 'День всех святых 2026',
+            items: [
+                { id: 'ds_1', name: 'Плащ чёрный' },
+                { id: 'ds_2', name: 'Плащ рыжий' },
+                { id: 'ds_3', name: 'Плащ белый' },
+                { id: 'ds_4', name: 'Сердце' },
+                { id: 'ds_6', name: 'Накидка чёрная' },
+                { id: 'ds_7', name: 'Накидка зелёная' },
+                { id: 'ds_5', name: 'Накидка белая' },
+                { id: 'ds_10', name: 'Капюшон чёрный' },
+                { id: 'ds_9', name: 'Капюшон зелёный' },
+                { id: 'ds_8', name: 'Капюшон белый' }
+            ]
+                
+            }
+            {
             name: 'Ангелы Хранители',
             items: [
                 { id: '8432', name: 'Крестик' },
@@ -911,8 +856,6 @@
                 { id: '18', name: 'Серебряная сетчатая фата' }
             ]
         }];
-
-        // Собираем все костюмы в плоский массив с именем и путём
         const allCostumes = [];
         costumeGroups.forEach(g => {
             g.items.forEach(item => {
@@ -924,20 +867,13 @@
                 });
             });
         });
-
-        // ============================================================
-        //  2. СОСТОЯНИЕ
-        // ============================================================
         const state = {
             catImageUrl: null,
-            costumeId: null, // выбранный ID в дропдауне (для предпросмотра и добавления)
-            layers: [], // массив ID костюмов (от нижнего к верхнему)
+            costumeId: null,
+            layers: [], 
         };
         const MAX_LAYERS = 15;
-
-        // ============================================================
-        //  3. DOM-ссылки
-        // ============================================================
+        
         const catBase = document.getElementById('catBase');
         const layersContainer = document.getElementById('layersContainer');
         const catPlaceholder = document.getElementById('catPlaceholder');
@@ -958,9 +894,6 @@
         const layerCount = document.getElementById('layerCount');
         const clearLayersBtn = document.getElementById('clearLayersBtn');
 
-        // ============================================================
-        //  4. ЗАГРУЗКА ОКРАСА
-        // ============================================================
         uploadBtn.addEventListener('click', () => fileInput.click());
 
         fileInput.addEventListener('change', (e) => {
@@ -996,19 +929,19 @@
             catBase.src = src;
             catBase.style.display = 'block';
             catPlaceholder.style.display = 'none';
-            // Сбрасываем слои и предпросмотр
             clearLayers();
-            // Сбрасываем выбранный костюм (чтобы не было предпросмотра без окраса)
             state.costumeId = null;
             selectedName.textContent = 'не выбран';
             document.querySelectorAll('.costume-item').forEach(el => el.classList.remove('active'));
             costumeStatus.innerHTML = '<span style="color:#7b7058;">Окрас загружен. Выберите костюм и нажмите +</span>';
-            renderLayers(); // обновим предпросмотр (его не будет)
+            renderLayers();
+                try {
+        localStorage.setItem('lastCatImage', src);
+    } catch (e) {
+        console.warn('Не удалось сохранить окрас в кэш:', e);
+    }
         }
 
-        // ============================================================
-        //  5. ПОСТРОЕНИЕ МЕНЮ КОСТЮМОВ
-        // ============================================================
         function buildDropdown() {
             dropdownMenu.innerHTML = '';
             costumeGroups.forEach(group => {
@@ -1033,36 +966,21 @@
             });
         }
 
-        // ============================================================
-        //  6. ВЫБОР КОСТЮМА (предпросмотр)
-        // ============================================================
         function selectCostume(id) {
             const costume = allCostumes.find(c => c.id === id);
             if (!costume) return;
             state.costumeId = id;
-
-            // Обновляем активный элемент в меню
             document.querySelectorAll('.costume-item').forEach(el => {
                 el.classList.toggle('active', el.dataset.id === id);
             });
             selectedName.textContent = costume.name;
             costumeStatus.innerHTML = `<span style="color:#b58d65;">${costume.name}</span> выбран. Нажмите + чтобы добавить.`;
             closeDropdown();
-
-            // Перерисовываем слои, чтобы отобразить предпросмотр
             renderLayers();
         }
 
-        // ============================================================
-        //  7. УПРАВЛЕНИЕ СЛОЯМИ
-        // ============================================================
-
-        // Рендеринг слоёв и предпросмотра
         function renderLayers() {
-            // Очищаем контейнер слоёв
             layersContainer.innerHTML = '';
-
-            // 1. Рисуем все сохранённые слои
             state.layers.forEach((id, index) => {
                 const img = document.createElement('img');
                 img.src = 'kostymi/' + id + '.png';
@@ -1071,10 +989,7 @@
                 img.onerror = () => { img.style.display = 'none'; };
                 layersContainer.appendChild(img);
             });
-
-            // 2. Предпросмотр выбранного костюма (если он не добавлен в слои)
             if (state.costumeId && state.catImageUrl) {
-                // Проверяем, не добавлен ли уже этот костюм в слои
                 if (!state.layers.includes(state.costumeId)) {
                     const costume = allCostumes.find(c => c.id === state.costumeId);
                     if (costume) {
@@ -1087,16 +1002,11 @@
                     }
                 }
             }
-
-            // Обновляем счётчик
             layerCount.textContent = state.layers.length;
-
-            // Обновляем список гардероба
             if (state.layers.length === 0) {
                 wardrobeList.innerHTML = '<div class="wardrobe-empty">Нет надетых костюмов</div>';
                 return;
             }
-
             let html = '';
             state.layers.forEach((id, index) => {
                 const costume = allCostumes.find(c => c.id === id);
@@ -1114,8 +1024,6 @@
                 `;
             });
             wardrobeList.innerHTML = html;
-
-            // Навешиваем обработчики на элементы списка
             wardrobeList.querySelectorAll('.wardrobe-item').forEach((item, idx) => {
                 const up = item.querySelector('.move-up');
                 const down = item.querySelector('.move-down');
@@ -1126,8 +1034,6 @@
                     moveLayer(idx, 1); });
                 if (remove) remove.addEventListener('click', (e) => { e.stopPropagation();
                     removeLayer(idx); });
-
-                // Drag & Drop
                 item.addEventListener('dragstart', (e) => {
                     e.dataTransfer.setData('text/plain', idx);
                     item.classList.add('dragging');
@@ -1160,8 +1066,6 @@
                 });
             });
         }
-
-        // Добавление слоя
         function addLayer() {
             const id = state.costumeId;
             if (!id) {
@@ -1182,16 +1086,12 @@
             const name = costume ? costume.name : id;
             costumeStatus.innerHTML = `<span style="color:#b58d65;">✓</span> Костюм <span class="highlight">${name}</span> добавлен (слой ${state.layers.length})`;
         }
-
-        // Удаление слоя
         function removeLayer(index) {
             if (index < 0 || index >= state.layers.length) return;
             state.layers.splice(index, 1);
             renderLayers();
             costumeStatus.innerHTML = '<span style="color:#7b7058;">Слой удалён</span>';
         }
-
-        // Перемещение слоя
         function moveLayer(index, direction) {
             const newIndex = index + direction;
             if (newIndex < 0 || newIndex >= state.layers.length) return;
@@ -1199,33 +1099,24 @@
             renderLayers();
             costumeStatus.innerHTML = '<span style="color:#7b7058;">Порядок слоёв изменён</span>';
         }
-
-        // Очистка всех слоёв
         function clearLayers() {
             if (state.layers.length === 0 && !state.costumeId) return;
             state.layers = [];
             renderLayers();
-            // После очистки предпросмотр останется, если выбран костюм
             if (state.costumeId) {
                 costumeStatus.innerHTML = `<span style="color:#7b7058;">Все слои удалены. Выбран костюм для предпросмотра.</span>`;
             } else {
                 costumeStatus.innerHTML = '<span style="color:#7b7058;">Все слои удалены</span>';
             }
         }
-
-        // ============================================================
-        //  9. ДРОПДАУН (открытие/закрытие)
-        // ============================================================
         function toggleDropdown() {
             dropdownMenu.classList.toggle('open');
             dropdownBtn.classList.toggle('open');
         }
-
         function closeDropdown() {
             dropdownMenu.classList.remove('open');
             dropdownBtn.classList.remove('open');
         }
-
         dropdownBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             toggleDropdown();
@@ -1235,18 +1126,11 @@
                 closeDropdown();
             }
         });
-
-        // ============================================================
-        //  10. ОБРАБОТЧИКИ СОБЫТИЙ
-        // ============================================================
         addLayerBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             addLayer();
         });
-
         clearLayersBtn.addEventListener('click', clearLayers);
-
-        // Перетаскивание файлов в контейнер кота
         catContainer.addEventListener('dragover', (e) => {
             e.preventDefault();
             catContainer.style.borderColor = '#b58d65';
@@ -1264,19 +1148,21 @@
                 reader.readAsDataURL(files[0]);
             }
         });
-
-        // ============================================================
-        //  11. ИНИЦИАЛИЗАЦИЯ
-        // ============================================================
         buildDropdown();
         renderLayers();
-
         if (state.costumeId) {
             const costume = allCostumes.find(c => c.id === state.costumeId);
             selectedName.textContent = costume ? costume.name : state.costumeId;
         }
-
-        console.log('Вешалка готова! Загрузите окрас, выбирайте костюмы и добавляйте их в слои.');
+        (function restoreCachedCat() {
+    try {
+        const cached = localStorage.getItem('lastCatImage');
+        if (cached) setCatImage(cached);
+    } catch (e) {
+        console.warn('Не удалось восстановить окрас из кэша:', e);
+    }
+})();
+        console.log('Вешалка готова!');
     </script>
 </body>
 
